@@ -1,3 +1,3 @@
 # final_Angular
 FrontEnd project management
-Angular & Spring Boot project managment created by ahmed jedidi, saif zhioua,  moulouk elfkih, eya maamori class dsi23
+Angular & Spring Boot project managment created by Ahmed Jedidi, Saif Zhioua,  Moulouk El fkih, Eya Maamori class dsi23
