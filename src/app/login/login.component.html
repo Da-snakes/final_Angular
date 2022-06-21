@@ -1,0 +1,83 @@
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<div class="container mt-5">
+    <br><br><br><br>
+    <div class="row justify-content-md-center shadow">
+        
+        <div class="col-md-9">
+        <br><br>
+            <h1>Login</h1>
+
+            <div class="alert alert-danger" *ngIf="erreur==1">
+                <strong>Erreur: Credentiel non valide!</strong>
+            </div>
+            <div class="alert alert-success" *ngIf="loading">
+                <strong>Login avec succès</strong>
+            </div>
+            <!--//////////////////////////////////////////////////////////////////////-->
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <!--[disabled]="loading" loginForm.valid    (click)="onLoggedin()"    class row       pattern=".+@globex\.com" minsize="30" required-->
+                    <!---------------------------------------------------------------------->
+                    <br/>
+                    <b><label  for="Email">Email</label></b>
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text rounded-left"><i class="fas fa-at"></i></span>
+                        </div>
+                        <input [(ngModel)]="user.email" formControlName="email" type="email" name="email" class="form-control" 
+                         placeholder="Email"  [ngClass]="{ ' is-invalid ': submitted && (mail?.hasError('required') || mail?.hasError('minlength') || mail?.hasError('email'))}" />
+                         <div class="invalid-feedback" *ngIf=" mail?.hasError('required') && submitted ">
+                            <div>* required : vrai</div>
+                        </div>
+                        <div class="invalid-feedback" *ngIf=" mail?.hasError('email') && submitted ">
+                            <div>* email : faux</div>
+                        </div>
+                        <div class="invalid-feedback" *ngIf=" mail?.hasError('minlength') && submitted ">
+                            <div>* Longueur min 6 caractères</div>
+                        </div>
+                    </div>
+                </div>
+                <!---------------------------------------------------------------------->
+                <div class="form-group">
+                    <b><label for="password">Mot de passe</label></b>
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text rounded-left"><i class="fas fa-lock"></i></span>
+                        </div>
+                        <input [(ngModel)]="user.password" formControlName="password" type="password" name="password" class="form-control" 
+                            placeholder="Mot de passe"  [ngClass]="{  
+                            ' is-invalid ': submitted && (pass?.hasError('required') || pass?.hasError('minlength'))  ,
+                            ' is-valid ': submitted && (!pass?.hasError('required') && !pass?.hasError('minlength')) }" >
+                            <div class="invalid-feedback" *ngIf=" pass?.hasError('required') && submitted ">
+                                <div>* required : vrai</div>
+                            </div>
+                            <div class="invalid-feedback" *ngIf=" pass?.hasError('minlength') && submitted ">
+                                <div>* longeur min 5 caractère</div>
+                            </div>
+                    </div>
+                </div>
+                <!---------------------------------------------------------------------->
+                <!--<div class=" justify-content-md-left">
+                    <div>  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span><input type="submit"  class="btn btn-primary " value="login"></div> 
+                </div>-->
+
+                <br>
+
+                <div class=" justify-content-md-left" disabled [hidden]="loading">
+                    <div class="clearfix">
+                        <a [routerLink]="['/signup']" class="btn btn-light float-right">Creer un compte</a>
+                        <input type="submit"  class="btn btn-primary col-2 " value="Login" style="font-weight: bold;">
+                    </div>
+
+                </div>
+
+                <button class="btn btn-primary" type="button" disabled [hidden]="!loading">
+                    <span class="spinner-border spinner-border-sm" role="status" ></span>
+                    Chargement...
+                </button>
+            </form>
+            <!--//////////////////////////////////////////////////////////////////////-->
+            <br><br><br>
+        </div>
+    </div>
+</div>

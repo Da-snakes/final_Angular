@@ -1,0 +1,89 @@
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Mot de passe</th>
+                    <th>Role</th>
+                    <th style="text-align: center;"> Action </th>
+                </tr>
+                <tbody *ngFor="let u of users">
+                    <tr>
+                        <td>{{u.iduser}}</td>
+                        <td>{{u.username}}</td>
+                        <td>{{u.email}}</td>
+                        <td>{{u.password}}</td>
+                        <td>{{u.role.nomRole}}</td>
+                        <td style="text-align: center;">
+
+                          <a class="btn btn-success" [routerLink]="['/update-user',u.iduser]">
+              
+                            <span style="color:white"> <i class="fas fa-paint-brush fa-lg "></i></span>
+
+                          </a>
+                          &nbsp;&nbsp;&nbsp;&nbsp;
+
+                          <a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" (click)="newUser = u;">
+                            
+                            <span style="color:white"> <i class="fas fa-trash "></i></span>
+
+                          </a>
+
+                        </td>
+                        <!---->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-----------------------------------------Popup modal Bootstrap NOT the Material Angular one---------------------------------------------------->
+
+
+
+<!-- Button trigger modal -->
+<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    case actuelle
+  </button>-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Supprimer l'utilisateur "{{newUser.username}}"</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!--<div class="modal-body">
+        <span class="text-justify">Couleur :</span>
+        <input type="text" class="form-control"  name="newOne" autofocus="autofocus" #cl />
+      </div>-->
+      <div class="alert alert-danger text-center" ><!--*ngIf="erreur==1 && submitted"-->
+        <strong>Etes-vous sur de le supprimer ?</strong>
+      </div>
+      <!--<div class="alert alert-success" > *ngIf="erreur==0 && submitted "
+        <strong>Changement avec success</strong>
+      </div>-->
+      <div class="modal-footer mx-auto">
+        <button type="button" class="btn btn-success mr-4 button4 custom" data-dismiss="modal"
+          >Retour</button>
+        <button type="button"  class="btn btn-danger ml-4  button4  custom"
+             (click)="supprimerUser(newUser)"  data-dismiss="modal"
+          >Supprimer</button><!--rounded-pill-->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->

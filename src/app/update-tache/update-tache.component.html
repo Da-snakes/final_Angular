@@ -1,0 +1,141 @@
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<br>
+<br>
+
+<div class = "container">
+  <div class = "row">
+      <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card shadow">
+<br/>                  
+        <h1 class = "text-center"> Modifier une Tache </h1>
+          <div class = "card-body">
+              <form >     
+
+
+                <div hidden class ="form-group">
+                  <b><label> ID</label></b>
+                    <input
+                    [(ngModel)]="newTache.idTache"
+                    type = "text"
+                    name = "idTache"
+                    class = "form-control"
+                    placeholder="Entrer le nom du idTache" 
+                    />
+                </div>
+
+                
+<br/>     
+                  <div class ="form-group">
+                    <b><label> Projet</label></b>
+                    <div class="input-group">
+                      <div class="input-group-append">
+                          <span class="input-group-text"><i class="fa fa-building"></i></span>
+                      </div>
+                      <input disabled
+                      [value]="newTache.projet.nomProjet"
+                      type = "text"
+                     
+                      class = "form-control"
+                      />
+                      </div>
+                  </div>
+<!--<br/>   -->              
+                  <div class ="form-group">
+                    <b><label> Nom</label></b>
+                    <div class="input-group">
+                      <div class="input-group-append">
+                          <span class="input-group-text"><i class="fa fa-briefcase"></i></span>
+                      </div>
+                      <input
+                      [(ngModel)]="newTache.nomTache"
+                      type = "text"
+                      name = "nomTache"
+                      class = "form-control"
+                      placeholder="Entrer le nom de la tache" 
+                      />
+                    </div>
+                  </div>
+<!--<br/>   -->                   
+                  <div class ="form-group">
+                    <b><label  class="col-form-label"> Description</label></b>
+                    <div class="input-group">
+                      <div class="input-group-append">
+                          <span class="input-group-text"><i class="fa fa-quote-left"></i></span>
+                      </div>
+                      <textarea 
+                      [(ngModel)]="newTache.desTache"
+                      name="desTache" 
+                      cols="40" 
+                      rows="4" 
+                      class="form-control" 
+                      placeholder="Entrer la description de la tache..." 
+                      ></textarea>
+                    </div>
+                      <!--<input
+                      [(ngModel)]="newTache.desTache"
+                      type = "text"
+                      name = "desTache"
+                      class = "form-control"
+                      placeholder="Entrer la description de la tache" 
+                      />-->
+                  </div>
+<!--<br/>   -->                   
+                  <div class ="form-group">
+                    <b><label> Debut</label></b>
+                    <div class="input-group">
+                      <div class="input-group-append">
+                          <span class="input-group-text"><i class="fa fa-calendar-alt"></i></span>
+                      </div>
+                    <input
+                    [(ngModel)]="newTache.dateDebut"
+                    type = "date"
+                    name = "dateDebut"
+                    class = "form-control"
+                    />
+                    </div>
+                </div>
+<!--<br/>   -->    
+                <div class ="form-group">
+                   <b> <label> Echeance</label></b>
+                   <div class="input-group">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fa fa-calendar-alt"></i></span>
+                    </div>
+                    <input
+                    [(ngModel)]="newTache.dateEcheance"
+                    type = "date"
+                    name = "dateEcheance"
+                    class = "form-control"
+                    />
+                    </div>
+                </div>
+
+                <b> <label> Statut</label></b>
+                <div class="input-group">
+                  <div class="input-group-append">
+                      <span class="input-group-text"><i class="fa fa-percent"></i></span>
+                  </div>
+                        <!--Statut-->
+                        <select class="form-control form-control-lg" name="statut"  [(ngModel)]="newTache.statut">
+                            <option *ngFor="let s of statutOptions" >
+                                {{s.statut}}
+                            </option>
+                        </select>
+                        <!--Statut-->
+                  </div>
+
+<br/>
+                  <div class = "box-footer">
+                      <button type="submit" (click)="updateTache()" class = "btn btn-primary">
+                          Modifier
+                      </button>
+                      &nbsp;&nbsp;&nbsp;
+                      <button type="submit" [routerLink]="['/taches',newTache.projet.idProjet]" class = "btn btn-info">
+                        Retour
+                    </button>
+                  </div>
+              </form>
+          
+          </div>
+      </div>
+  </div>
+</div>

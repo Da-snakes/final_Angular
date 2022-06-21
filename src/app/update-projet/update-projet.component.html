@@ -1,0 +1,179 @@
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<br>
+  <br>
+
+  <div class = "container">
+    <div class = "row">
+        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card shadow">
+<br/>                  
+          <h1 class = "text-center"> Modifier un projet </h1>
+            <div class = "card-body">
+                <form >     
+
+
+                  <div hidden class ="form-group">
+                    <b><label> ID</label></b>
+                      <input
+                      [(ngModel)]="newProjet.idProjet"
+                      type = "text"
+                      name = "idProjet"
+                      class = "form-control"
+                      placeholder="Enter le nom du projet" 
+                      />
+                  </div>
+  
+                  <b> <label> Pole</label></b>
+                  <div class="input-group">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fa fa-building"></i></span>
+                    </div>
+                  <!--Pole-->
+                  <select class="form-control form-control-lg" name="pole" [(ngModel)]="newProjet.pole">
+                      <option *ngFor="let p of poleOptions" >
+                          {{p.nomPole}}
+                      </option>
+                  </select>
+                  <!--Pole-->   
+                  </div>
+<br/>     
+                    <div class ="form-group">
+                      <b><label> Nom</label></b>
+                      <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-briefcase"></i></span>
+                        </div>
+                        <input
+                        [(ngModel)]="newProjet.nomProjet"
+                        type = "text"
+                        name = "nomProjet"
+                        class = "form-control"
+                        placeholder="Enter le nom du projet" 
+                        />
+                      </div>
+                    </div>
+<!--<br/>   -->                   
+                    <div class ="form-group">
+                      <b><label> Chef</label></b>
+                        <!--<input
+                        [(ngModel)]="newProjet.chefProjet"
+                        type = "text"
+                        name = "chefProjet"
+                        class = "form-control"
+                        placeholder="Enter le nom du chef" 
+                        />-->
+                        <div class="input-group">
+                          <div class="input-group-append">
+                              <span class="input-group-text"><i class="fas fa-user"></i></span>
+                          </div>
+                    <!--nomChef-->
+                    <select class="form-control form-control-lg" name="chefProjet"  [(ngModel)]="newProjet.chefProjet">
+                      <option *ngFor="let s of chefs" >
+                          {{s.username}}
+                      </option>
+                    </select>
+                    <!--nomChef-->
+                        </div>
+                    </div>
+<!--<br/>   -->                   
+                    <div class ="form-group">
+                      <b><label> Description</label></b>
+                      <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-quote-left"></i></span>
+                        </div>
+                        <textarea 
+                        [(ngModel)]="newProjet.descProjet"
+                        name="descProjet" 
+                        cols="40" 
+                        rows="4" 
+                        class="form-control" 
+                        placeholder="Enter la description du projet..." 
+                        ></textarea>
+                      </div>
+
+                        <!--<input
+                        [(ngModel)]="newProjet.descProjet"
+                        type = "text"
+                        name = "descProjet"
+                        class = "form-control"
+                        placeholder="Enter la description du projet" 
+                        />-->
+
+                    </div>
+<!--<br/>   -->                   
+                    <div class ="form-group">
+                      <b><label> Budget</label></b>
+                      <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-dollar-sign"></i></span>
+                        </div>
+                        <input
+                        [(ngModel)]="newProjet.budgetProjet"
+                        type = "number"
+                        name = "budgetProjet"
+                        class = "form-control"
+                        placeholder="Budget en $" 
+                        />
+                      </div>
+                    </div>
+<!--<br/>   -->   
+                    <div class ="form-group">
+                      <b><label> Debut</label></b>
+                      <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-calendar-alt"></i></span>
+                        </div>
+                      <input
+                      [(ngModel)]="newProjet.dateDebut"
+                      type = "date"
+                      name = "dateDebut"
+                      class = "form-control"
+                      />
+                      </div>
+                  </div>
+<!--<br/>   -->    
+                  <div class ="form-group">
+                     <b> <label> Echeance</label></b>
+                     <div class="input-group">
+                      <div class="input-group-append">
+                          <span class="input-group-text"><i class="fa fa-calendar-alt"></i></span>
+                      </div>
+                      <input
+                      [(ngModel)]="newProjet.dateEcheance"
+                      type = "date"
+                      name = "dateEcheance"
+                      class = "form-control"
+                      />
+                     </div>
+                  </div>
+
+                  <b> <label> Statut</label></b>
+                  <div class="input-group">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fa fa-percent"></i></span>
+                    </div>
+                          <!--Statut-->
+                          <select class="form-control form-control-lg" name="statut"  [(ngModel)]="newProjet.statut">
+                              <option *ngFor="let s of statutOptions" >
+                                  {{s.statut}}
+                              </option>
+                          </select>
+                          <!--Statut-->
+                  </div>
+
+<br/>
+                    <div class = "box-footer">
+                        <button type="submit" (click)="updateProjet()" class = "btn btn-primary">
+                            Modifier
+                        </button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button type="submit" [routerLink]="['/projets']" class = "btn btn-info">
+                          Retour
+                      </button>
+                    </div>
+                </form>
+            
+            </div>
+        </div>
+    </div>
+</div>
